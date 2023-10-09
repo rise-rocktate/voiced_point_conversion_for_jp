@@ -1,6 +1,6 @@
 library voiced_point_conversion_for_jp;
 
-/// 個のライブラリ内で発生した例外をこのクラスで投げます
+/// このライブラリ内で発生した例外をこのクラスで投げます
 class VoicedPointException implements Exception {
   final String message;
 
@@ -10,7 +10,19 @@ class VoicedPointException implements Exception {
   String toString() => 'VoicedPointException: $message';
 }
 
-/// 清音を濁音、半濁音、小書きに変換するライブラリクラスです
+/// 変換タイプの列挙型
+enum ConvType {
+  /// 濁音変換
+  voicedPoint,
+
+  /// 半濁音変換
+  halfDullness,
+
+  /// 小書き変換
+  smallWriting,
+}
+
+/// 日本語の清音を濁音、半濁音、小書きに変換するライブラリクラスです
 class VoicedPointConv4JP {
   /// 濁音リスト
   static Map<String, String> voicedPointTable = {
@@ -157,8 +169,27 @@ class VoicedPointConv4JP {
     return convert(halfDullnessTable, input);
   }
 
-  // 清音を小書きに変換する(例：あ -> ぁ)
+  /// 清音を小書きに変換する(例：あ -> ぁ)
   static String convertToSmallWriting(String input) {
     return convert(smallWritingTable, input);
+  }
+
+  /// タイプでどんな変換をするか決めて変換する
+  static String convertByType(ConvType type, String input) {
+    String result;
+    switch (type) {
+      case ConvType.voicedPoint:
+        result = convertToVoicedPoint(input);
+        break;
+      case ConvType.halfDullness:
+        result = convertToHalfDullness(input);
+        break;
+      case ConvType.smallWriting:
+        result = convertToSmallWriting(input);
+        break;
+      default:
+        throw VoicedPointException("type is invalid.($type)");
+    }
+    return result;
   }
 }

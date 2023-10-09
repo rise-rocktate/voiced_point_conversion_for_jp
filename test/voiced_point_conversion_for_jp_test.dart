@@ -22,5 +22,9 @@ void main() {
     expect(VoicedPointConv4JP.convertToSmallWriting('や'), 'ゃ');
     expect(VoicedPointConv4JP.convertToSmallWriting('ゆ'), 'ゅ');
     expect(VoicedPointConv4JP.convertToSmallWriting('よ'), 'ょ');
+    // タイプで選択
+    expect(VoicedPointConv4JP.convertByType(ConvType.voicedPoint, 'か'), 'が');
+    expect(VoicedPointConv4JP.convertByType(ConvType.halfDullness, 'は'), 'ぱ');
+    expect(VoicedPointConv4JP.convertByType(ConvType.smallWriting, 'や'), 'ゃ');
   });
 }
