@@ -1,3 +1,6 @@
-## 0.0.1
+# CHANGELOG
 
-* TODO: Describe initial release.
+## [0.0.1] - 2023-10-09
+### Added
+ - プロジェクト初期リリース
+
