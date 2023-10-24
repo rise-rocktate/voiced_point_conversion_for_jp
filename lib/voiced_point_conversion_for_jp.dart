@@ -130,6 +130,7 @@ class VoicedPointConv4JP {
     'ワ': 'ヮ',
   };
 
+  /// トグル変換テーブル
   static Map<String, String> toggleTable = {
     'あ': 'ぁ',
     'ぁ': 'あ',
