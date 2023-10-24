@@ -11,6 +11,13 @@ print(str2); // ぱ
 
 String str3 = VoicedPointConv4JP.convertToSmallWriting('や');
 print(str3); // ゃ
-```
 
-※複数文字の場合、すべての文字を変換しますが、一文字ずつを推奨します。
+String str4 = VoicedPointConv4JP.convertByToggle4last('はは');
+print(str4); // はば
+
+str4 = VoicedPointConv4JP.convertByToggle4last(str4);
+print(str4); // はぱ
+
+str4 = VoicedPointConv4JP.convertByToggle4last(str4);
+print(str4); // はは
+```
