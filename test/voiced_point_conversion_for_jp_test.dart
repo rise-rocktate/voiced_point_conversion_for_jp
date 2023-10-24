@@ -26,5 +26,9 @@ void main() {
     expect(VoicedPointConv4JP.convertByType(ConvType.voicedPoint, 'か'), 'が');
     expect(VoicedPointConv4JP.convertByType(ConvType.halfDullness, 'は'), 'ぱ');
     expect(VoicedPointConv4JP.convertByType(ConvType.smallWriting, 'や'), 'ゃ');
+    // トグル変換
+    expect(VoicedPointConv4JP.convertByToggle4last('はは'), 'はば');
+    expect(VoicedPointConv4JP.convertByToggle4last('はば'), 'はぱ');
+    expect(VoicedPointConv4JP.convertByToggle4last('はぱ'), 'はは');
   });
 }
